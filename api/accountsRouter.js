@@ -16,9 +16,7 @@ const validateAccount = (req,res,next) => {
 }
 router.use('/:id', validateAccount);
 router.get('/', (req, res) => {
-    const { limit = false, sortby = 'id', sortdir = 'asc'} = req.query;
-    console.log(limit);
-    console.log(sortby);
+    const { limit = 999, sortby = 'id', sortdir = 'asc'} = req.query;
     db('accounts').orderBy(sortby,sortdir).limit(limit)
         .then(r => {
             res.status(200).json({
