@@ -1,4 +1,5 @@
 const express = require('express');
+const { limit } = require('../data/dbConfig.js');
 const router = express.Router();
 const db = require("../data/dbConfig.js");
 const validateAccount = (req,res,next) => {
@@ -15,7 +16,10 @@ const validateAccount = (req,res,next) => {
 }
 router.use('/:id', validateAccount);
 router.get('/', (req, res) => {
-    db('accounts')
+    const { limit = false, sortby = 'id', sortdir = 'asc'} = req.query;
+    console.log(limit);
+    console.log(sortby);
+    db('accounts').orderBy(sortby,sortdir).limit(limit)
         .then(r => {
             res.status(200).json({
                 message: "successfully retrieved accounts data",
