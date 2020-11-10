@@ -34,7 +34,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     const { name, budget } = req.body;
     if (!name || !budget) { 
-        res.status(300).json({message: "error: must provide account name and budget"})
+        res.status(400).json({message: "error: must provide account name and budget"})
     } else {
         db('accounts').where({ name }).then(r => {
             if (r.length == 0) {
