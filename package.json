@@ -3,10 +3,12 @@
     "version": "1.0.0",
     "main": "index.js",
     "scripts": {
-        "server": "nodemon index.js"
+        "server": "nodemon index.js",
+        "start": "node index.,js"
     },
     "repository": "https://github.com/LambdaSchool/node-db1-project",
     "dependencies": {
+        "cors": "^2.8.5",
         "express": "^4.17.1",
         "knex": "^0.21.2",
         "pg": "^8.3.0",
